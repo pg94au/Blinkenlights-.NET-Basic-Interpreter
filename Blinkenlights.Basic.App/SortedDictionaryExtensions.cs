@@ -44,66 +44,6 @@ namespace Blinkenlights.Basic.App
             }
         }
 
-        public static TKey LowerKey<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, true, out list);
-            if (indices.Item1 < 0)
-                return default(TKey);
-
-            return list[indices.Item1];
-        }
-        public static KeyValuePair<TKey, TValue> LowerEntry<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, true, out list);
-            if (indices.Item1 < 0)
-                return default(KeyValuePair<TKey, TValue>);
-
-            var newKey = list[indices.Item1];
-            return new KeyValuePair<TKey, TValue>(newKey, dictionary[newKey]);
-        }
-
-        public static TKey FloorKey<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, false, out list);
-            if (indices.Item1 < 0)
-                return default(TKey);
-
-            return list[indices.Item1];
-        }
-        public static KeyValuePair<TKey, TValue> FloorEntry<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, false, out list);
-            if (indices.Item1 < 0)
-                return default(KeyValuePair<TKey, TValue>);
-
-            var newKey = list[indices.Item1];
-            return new KeyValuePair<TKey, TValue>(newKey, dictionary[newKey]);
-        }
-
-        public static TKey CeilingKey<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, false, out list);
-            if (indices.Item2 == list.Count)
-                return default(TKey);
-
-            return list[indices.Item2];
-        }
-        public static KeyValuePair<TKey, TValue> CeilingEntry<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, false, out list);
-            if (indices.Item2 == list.Count)
-                return default(KeyValuePair<TKey, TValue>);
-
-            var newKey = list[indices.Item2];
-            return new KeyValuePair<TKey, TValue>(newKey, dictionary[newKey]);
-        }
-
         public static TKey HigherKey<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
         {
             List<TKey> list;
@@ -112,16 +52,6 @@ namespace Blinkenlights.Basic.App
                 return default(TKey);
 
             return list[indices.Item2];
-        }
-        public static KeyValuePair<TKey, TValue> HigherEntry<TKey, TValue>(this SortedDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            List<TKey> list;
-            var indices = GetPossibleIndices(dictionary, key, true, out list);
-            if (indices.Item2 == list.Count)
-                return default(KeyValuePair<TKey, TValue>);
-
-            var newKey = list[indices.Item2];
-            return new KeyValuePair<TKey, TValue>(newKey, dictionary[newKey]);
         }
     }
 }
