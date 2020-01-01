@@ -76,7 +76,11 @@ namespace Blinkenlights.Basic.App
 
         public void AdvanceLine()
         {
-            _currentLineNumber = _statements.HigherKey(_currentLineNumber) != 0 ? _statements.HigherKey(_currentLineNumber) : int.MaxValue;
+            var currentIndex = _statements.Keys.ToList().BinarySearch(_currentLineNumber);
+
+            _currentLineNumber = _statements.Keys.ElementAtOrDefault(currentIndex + 1) != 0
+                ? _statements.Keys.ElementAtOrDefault(currentIndex + 1)
+                : int.MaxValue;
         }
 
         public void GotoLine(int targetLine)
