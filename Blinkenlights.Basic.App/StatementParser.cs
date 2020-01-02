@@ -9,12 +9,12 @@ namespace Blinkenlights.Basic.App
 {
     public class StatementParser
     {
-        public SortedDictionary<int, IStatement> Parse(Stream inputStream)
+        public SortedDictionary<int, IStatement> Parse(Stream inputStream, TextWriter output, TextWriter error)
         {
             var input = new AntlrInputStream(inputStream);
-            var lexer = new BasicLexer(input);
+            var lexer = new BasicLexer(input, output, error);
             var tokens = new CommonTokenStream(lexer);
-            var parser = new BasicParser(tokens);
+            var parser = new BasicParser(tokens, output, error);
             var tree = parser.program();
 
             var visitor = new ProgramVisitor();

@@ -25,7 +25,7 @@ namespace Blinkenlights.Basic.App
         }
 
         public Interpreter(string program, TextReader inputReader, TextWriter outputWriter, TextWriter errorWriter)
-            : this(ParseStatementsFromProgramText(program), inputReader, outputWriter, errorWriter)
+            : this(ParseStatementsFromProgramText(program, outputWriter, errorWriter), inputReader, outputWriter, errorWriter)
         {
         }
 
@@ -39,11 +39,11 @@ namespace Blinkenlights.Basic.App
             ErrorWriter = errorWriter;
         }
 
-        private static SortedDictionary<int, IStatement> ParseStatementsFromProgramText(string program)
+        private static SortedDictionary<int, IStatement> ParseStatementsFromProgramText(string program, TextWriter outputwriter, TextWriter errorWriter)
         {
             var programStream = new MemoryStream(Encoding.UTF8.GetBytes(program));
             var statementParser = new StatementParser();
-            var statements = statementParser.Parse(programStream);
+            var statements = statementParser.Parse(programStream, outputwriter, errorWriter);
 
             return statements;
         }
