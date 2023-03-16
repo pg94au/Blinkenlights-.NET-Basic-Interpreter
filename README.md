@@ -3,8 +3,7 @@ A simple BASIC interpreter built in C# for .NET Core using Antlr4
 
 Based on https://github.com/pg94au/Blinkenlights-Basic-Interpreter
 
-
-To generate C# code for antlr source:
+You can build and run this with the already generated antlr source in the Blinkenlights.Basic.Gen project.  If you wish to re-generate this source from the Basic.g4 input, you can manually perform the following steps:
 
 ```
 cd Blinkenlights.Basic.Gen
