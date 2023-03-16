@@ -23,7 +23,6 @@ namespace Blinkenlights.Basic.Tests.Statements
         {
             var interpreter = @"
                 10 LET X=123
-                20 END
             ".ExecuteWithError(out var error);
 
             Assert.That(interpreter.Finished, Is.True);

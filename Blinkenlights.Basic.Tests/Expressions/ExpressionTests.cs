@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Blinkenlights.Basic.Tests.Statements;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Blinkenlights.Basic.Tests.Expressions
 {
